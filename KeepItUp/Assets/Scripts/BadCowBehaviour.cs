@@ -13,7 +13,8 @@ public class BadCowBehaviour : MonoBehaviour
     Vector3 negativeVelocity = new Vector3(0, -1f, 0);
     private float minHeight;
     private float maxHeight;
-    public Text score;
+    //public Text score;
+    public Slider slider;
 
     void Start()
     {
@@ -58,13 +59,15 @@ public class BadCowBehaviour : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        Debug.Log("Ill cow Collision");
         goUp = false;
-        float currentscore = float.Parse(score.text);
-        currentscore -= 100f;
-        if (currentscore < 0)
-            currentscore = 0f;
+        //float currentscore = float.Parse(score.text);  //Changing the score
+        //currentscore -= 100f;
+        //if (currentscore < 0)
+        //   currentscore = 0f;
         //Debug.Log(currentscore);
-        score.text = currentscore.ToString();
+        //score.text = currentscore.ToString();
+        slider.value -= 40; //For every ill cow touched, we decrease fuel
         gameObject.GetComponent<Rigidbody>().velocity = new Vector3(0f, 0f, 0f);
 
         transform.position = initialposition;

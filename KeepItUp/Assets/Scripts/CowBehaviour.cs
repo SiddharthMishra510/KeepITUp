@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-using UnityEngine.UI;
+
 public class CowBehaviour : MonoBehaviour
 {
 
@@ -16,7 +16,7 @@ public class CowBehaviour : MonoBehaviour
     private float minHeight;
     private float maxHeight;
 
-    public Text score;
+    //public Text score;
 
     void Start()
     {
@@ -37,18 +37,21 @@ public class CowBehaviour : MonoBehaviour
                 cowGoDown();
 
     }
+
     void cowGoUp()
     {
         rb.velocity = positiveVelocity;
         if (transform.position.y >= maxHeight)
             goUp = false;
     }
+
     void cowGoDown()
     {
         rb.velocity = negativeVelocity;
         if (transform.position.y <= initialposition.y)
             ResetCow();
     }
+
     public void ResetCow()
     {
         goUp = true;
@@ -56,13 +59,14 @@ public class CowBehaviour : MonoBehaviour
         transform.position = initialposition;
         toMove = false;
     }
+
     private void OnCollisionEnter(Collision collision)
     {
         goUp = false;
-        float currentscore = float.Parse(score.text);
-        currentscore += 100f;
+        //float currentscore = float.Parse(score.text); //Changing the score
+        //currentscore += 100f;
         //Debug.Log(currentscore);    
-        score.text = currentscore.ToString();
+        //score.text = currentscore.ToString();
         gameObject.GetComponent<Rigidbody>().velocity = new Vector3(0f, 0f, 0f);
 
         transform.position = initialposition;

@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
@@ -8,6 +6,8 @@ public class PauseMenu : MonoBehaviour
 
     public static bool isPaused = false;
     public GameObject PauseMenuUI;
+    public GameObject joystick;
+
     public void Resume()
     {
         PauseMenuUI.SetActive(false);
@@ -27,6 +27,18 @@ public class PauseMenu : MonoBehaviour
     public void Quit()
     {
         Application.Quit();
+    }
+
+    public void JoystickLeft()
+    {
+        RectTransform rt = joystick.GetComponent<RectTransform>();
+        rt.anchoredPosition = new Vector3 (-400, -115, 0); //Joystick position on the left
+    }
+
+    public void JoystickRight()
+    {
+        RectTransform rt = joystick.GetComponent<RectTransform>();
+        rt.anchoredPosition = new Vector3 (400, -115, 0); //Joystick position on the right
     }
 
 }

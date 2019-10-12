@@ -5,7 +5,7 @@ public class BetterUpDown : MonoBehaviour
 
     public GameObject floor;
     public GameObject badCow;
-    public GameObject cow1, cow2, cow3;
+    public GameObject cow1, cow2, cow3, illCow;
     GameObject firstObject, secondObject, thirdObject;
     Rigidbody rbf, rbs, rbt;
 
@@ -14,6 +14,7 @@ public class BetterUpDown : MonoBehaviour
     int first, second, third;
     public int goUpTimer = 6;
     public int howManyCows = 10;
+    private string replacedCowTag;
 
     public Vector3 initalposition1, initalposition2, initalposition3;
 
@@ -23,10 +24,11 @@ public class BetterUpDown : MonoBehaviour
    
     void Start()
     {
-        
+        illCow = GameObject.FindGameObjectWithTag("badcow");
         //Debug.Log(maxHeight);
         //randomGenerator();
-        InvokeRepeating("randomGenerator", 3f, goUpTimer); // TODO Adjust  Timing Here
+        InvokeRepeating("randomGenerator", 3f, goUpTimer); // TODO Adjust Timing Here
+        //ResetTag();
     }
 
     int RandomRangeExcept(int min, int max, int except)
@@ -67,15 +69,23 @@ public class BetterUpDown : MonoBehaviour
         {
             Debug.Log("changed cow//ill cow up");
             badCow.transform.position = cow3.transform.position;
+            //badCow.tag = cow3.tag;
+            //replacedCowTag = cow3.tag;
+            //cow3.tag = "999";
             BadCowBehaviour script4 = badCow.GetComponent<BadCowBehaviour>();
             script4.toMove = true;
+            //ResetTag();
         }
         else
         {
             script3 = cow3.GetComponent<CowBehaviour>();
-
             script3.toMove = true;
         }
     }
 
+    //void ResetTag()
+    //{
+    //    cow3.tag = replacedCowTag;
+        //illCow.tag = "badcow";
+    //}
 }

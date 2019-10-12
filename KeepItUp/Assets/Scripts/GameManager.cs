@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour
     public GameObject Fill;
     public Slider slider;
     public float restartDelay = 1f;
-    public float decreaseValue = 5f;
+    public float decreaseValue = 3f;
     public float minY;
     Rigidbody rbUFO;
 
@@ -67,14 +67,15 @@ public class GameManager : MonoBehaviour
 	{
 		if (gameHasEnded == false)
 		{
-            try {
+            try
+            {
                 FindObjectOfType<AudioManager>().Play("Lose");
-
             }
             catch(Exception e)
             {
                
             }
+
             gameHasEnded = true;
 			Invoke("Restart", restartDelay);
 		}
