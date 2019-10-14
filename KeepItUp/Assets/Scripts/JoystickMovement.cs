@@ -3,17 +3,19 @@ using UnityEngine.UI;
 
 public class JoystickMovement : MonoBehaviour
 {
-    private float xMovement;
-    private float zMovement;
-    public Joystick joystick;
 
     public float speed = 10.0f;
-    [SerializeField] private float JumpForce = 10f;                          // Amount of force added when the player jumps	
-    private float jumpCount = 0;
-    public Slider slider;
-    private bool isJumping = false;                                          // public bool canJump = true; //to be disabled when EndGame
+    public float JumpForce = 10f;                          // Amount of force added when the player jumps	
 
+    public Joystick joystick;
+    private float xMovement;
+    private float zMovement;
+
+    public Slider slider;
     private Rigidbody rb;
+
+    private float jumpCount = 0;
+    private bool isJumping = false;                                          // public bool canJump = true; //to be disabled when EndGame
 
     void jump()
     {
@@ -40,7 +42,7 @@ public class JoystickMovement : MonoBehaviour
             {
                 //  FindObjectOfType<AudioManager>().Play("Cow");
                 //Debug.Log("increased fuel");
-                slider.value += 5;
+                slider.value += 13;
             }
     }
 

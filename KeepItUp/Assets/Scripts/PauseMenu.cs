@@ -7,6 +7,7 @@ public class PauseMenu : MonoBehaviour
     public static bool isPaused = false;
     public GameObject PauseMenuUI;
     public GameObject joystick;
+    public GameManager GameManager;
 
     public void Resume()
     {
@@ -31,12 +32,14 @@ public class PauseMenu : MonoBehaviour
 
     public void JoystickLeft()
     {
+        PlayerPrefs.SetInt("JoystickLeft", 1);
         RectTransform rt = joystick.GetComponent<RectTransform>();
-        rt.anchoredPosition = new Vector3 (-400, -115, 0); //Joystick position on the left
+        rt.anchoredPosition = new Vector3(-400, -115, 0); //Joystick position on the left
     }
 
     public void JoystickRight()
     {
+        PlayerPrefs.SetInt("JoystickLeft", 0);
         RectTransform rt = joystick.GetComponent<RectTransform>();
         rt.anchoredPosition = new Vector3 (400, -115, 0); //Joystick position on the right
     }

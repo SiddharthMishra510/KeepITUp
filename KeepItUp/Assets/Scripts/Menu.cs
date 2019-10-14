@@ -6,6 +6,7 @@ using TMPro;
 
 public class Menu : MonoBehaviour
 {
+
     public GameObject MuteButton;
     public Sprite musicOnSprite;
     public Sprite musicOffSprite;

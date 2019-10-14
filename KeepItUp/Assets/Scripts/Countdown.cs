@@ -12,15 +12,15 @@ public class Countdown : MonoBehaviour
     //public GameObject FuelSlider;
 
     public  float timeLeft =3.0f;
+
     void Start()
     {
+        TextMeshProUGUI Text = TextHolder.GetComponent<TextMeshProUGUI>();
         //Score.SetActive(false);
         //FuelSider.SetActive(false);
-        TextMeshProUGUI Text = TextHolder.GetComponent<TextMeshProUGUI>();
-       // timeLeft = 3.0f;
-
-    //Time.timeScale = 0f;
-}
+        //timeLeft = 3.0f;
+        //Time.timeScale = 0f;
+    }
 
     void Update()
     {
@@ -31,7 +31,7 @@ public class Countdown : MonoBehaviour
             //Debug.Log("game starts");
             CountdownUI.SetActive(false);
             GameManager.GetComponent<ScoreController>().enabled = true;
-          //  UFO.GetComponent<Accelerometer>().enabled = true;
+            //UFO.GetComponent<Accelerometer>().enabled = true;
         }
     }
 

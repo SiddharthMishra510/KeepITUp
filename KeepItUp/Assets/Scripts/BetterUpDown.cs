@@ -67,14 +67,14 @@ public class BetterUpDown : MonoBehaviour
 
         if(randomvalue>80.0f)
         {
-            Debug.Log("changed cow//ill cow up");
+            //Debug.Log("changed cow//ill cow up");
             badCow.transform.position = cow3.transform.position;
-            //badCow.tag = cow3.tag;
-            //replacedCowTag = cow3.tag;
-            //cow3.tag = "999";
+            badCow.tag = cow3.tag;
+            replacedCowTag = cow3.tag;
+            cow3.tag = "999";
             BadCowBehaviour script4 = badCow.GetComponent<BadCowBehaviour>();
             script4.toMove = true;
-            //ResetTag();
+            Invoke("ResetTag",4);
         }
         else
         {
@@ -83,9 +83,10 @@ public class BetterUpDown : MonoBehaviour
         }
     }
 
-    //void ResetTag()
-    //{
-    //    cow3.tag = replacedCowTag;
-        //illCow.tag = "badcow";
-    //}
+    void ResetTag()
+    {
+        //Debug.Log("called resettag");
+        cow3.tag = replacedCowTag;
+        illCow.tag = "badcow";
+    }
 }

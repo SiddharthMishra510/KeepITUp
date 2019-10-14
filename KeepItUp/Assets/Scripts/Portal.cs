@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public class Portal : MonoBehaviour
 {
@@ -21,22 +22,29 @@ public class Portal : MonoBehaviour
     }
 
     void Update()
-    {
-        GameObject cow = GameObject.FindGameObjectWithTag(Tag);
-        //if(cow.transform.position.y >= posColorChange || illCow.transform.position.y >= posColorChange)
-        if (cow.transform.position.y >= posColorChange)
+    {   try
         {
-            mat.color = Color.red;
-            //mat.color = redColor;
-           // Debug.Log("red ran");
+            GameObject cow = GameObject.FindGameObjectWithTag(Tag);
+            //if(cow.transform.position.y >= posColorChange || illCow.transform.position.y >= posColorChange)
+            if (cow.transform.position.y >= posColorChange)
+            {
+                mat.color = Color.red;
+                //mat.color = redColor;
+                // Debug.Log("red ran");
+            }
+            //else if (cow.transform.position.y <= posColorRevert || illCow.transform.position.y <= posColorChange)
+            else if (cow.transform.position.y <= posColorRevert)
+            {
+                mat.color = Color.white;
+                //mat.color = whiteColor;
+                //Debug.Log("white ran");
+            }
         }
-        //else if (cow.transform.position.y <= posColorRevert || illCow.transform.position.y <= posColorChange)
-        else if (cow.transform.position.y <= posColorRevert)
+        catch(Exception e)
         {
-            mat.color = Color.white;
-            //mat.color = whiteColor;
-            //Debug.Log("white ran");
+
         }
+       
     }
 
 }

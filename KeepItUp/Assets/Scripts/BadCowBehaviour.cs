@@ -59,7 +59,7 @@ public class BadCowBehaviour : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log("Ill cow Collision");
+        //Debug.Log("Ill cow Collision");
         goUp = false;
         //float currentscore = float.Parse(score.text);  //Changing the score
         //currentscore -= 100f;

@@ -15,9 +15,22 @@ public class GameManager : MonoBehaviour
     public float decreaseValue = 3f;
     public float minY;
     Rigidbody rbUFO;
+    public GameObject joystick;
+
 
     void Start()
     {
+        if (PlayerPrefs.GetInt("JoystickLeft", 1) == 1)
+        {
+            RectTransform rt = joystick.GetComponent<RectTransform>();
+            rt.anchoredPosition = new Vector3(-400, -115, 0);
+        }
+        else if (PlayerPrefs.GetInt("JoystickLeft", 1) == 0)
+        {
+            RectTransform rt = joystick.GetComponent<RectTransform>();
+            rt.anchoredPosition = new Vector3(400, -115, 0);
+        }
+
         rbUFO = UFO.GetComponent<Rigidbody>();
         //  Debug.Log("fuel is" + slider.value);
         InvokeRepeating("DecreaseFuel", 3, 2);
@@ -35,9 +48,10 @@ public class GameManager : MonoBehaviour
     private void Update()
     {
         //Debug.Log("fuel is" + slider.value);
+
         if (slider.value == 0)
         {
-         //   UFO.GetComponent<Accelerometer>().canJump = false;
+            //UFO.GetComponent<Accelerometer>().canJump = false;
             Invoke("EndGame", 2f);
         }
     }
@@ -71,10 +85,7 @@ public class GameManager : MonoBehaviour
             {
                 FindObjectOfType<AudioManager>().Play("Lose");
             }
-            catch(Exception e)
-            {
-               
-            }
+            catch(Exception e) { }
 
             gameHasEnded = true;
 			Invoke("Restart", restartDelay);
